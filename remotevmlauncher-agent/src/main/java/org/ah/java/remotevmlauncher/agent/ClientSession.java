@@ -411,6 +411,8 @@ public class ClientSession implements Runnable {
             if (CLIENT_LOGGER.isLoggable(Level.FINER)) { CLIENT_LOGGER.finer("Closing client side"); }
             closeChannel(clientSocketChannel);
         }
+        stop = true;
+        process.destroy(); // AkiBot: This will kill running process!
     }
 
     public void closeLauncherSide() throws IOException {
